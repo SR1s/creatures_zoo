@@ -1,0 +1,9 @@
+_CURRENT_DIR=$(pwd)
+_CURRENT_GIT_BRANCH=$(git symbolic-ref --short HEAD)
+_CURRENT_GIT_BRANCH_HEAD_DATE=$(git log -1 --pretty=oneline --pretty=format:"%ad" --date=short | sed 's/-//g')
+
+_TITLE="${_CURRENT_GIT_BRANCH} @${_CURRENT_GIT_BRANCH_HEAD_DATE}"
+echo "current project: ${_CURRENT_DIR}"
+echo "update name: ${_TITLE}"
+echo ${_TITLE} > .idea/.name
+echo "project name update to $(cat .idea/.name)"
